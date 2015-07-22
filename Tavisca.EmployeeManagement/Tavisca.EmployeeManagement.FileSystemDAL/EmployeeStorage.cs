@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Tavisca.EmployeeManagement.Interface;
 using Newtonsoft.Json;
 using Tavisca.EmployeeManagement.ErrorSpace;
+using Tavisca.EmployeeManagement.EnterpriseLibrary;
 
 namespace Tavisca.EmployeeManagement.FileStorage
 {
@@ -17,51 +18,78 @@ namespace Tavisca.EmployeeManagement.FileStorage
 
         public Model.Employee Save(Model.Employee employee)
         {
-            if (Directory.Exists(Configurations.StoragePath) == false)
+            try
             {
-                Directory.CreateDirectory(Configurations.StoragePath);
+                if (Directory.Exists(Configurations.StoragePath) == false)
+                {
+                    Directory.CreateDirectory(Configurations.StoragePath);
+                }
+
+                var filePath = GetFileName(employee.Id);
+
+                File.WriteAllText(filePath, JsonConvert.SerializeObject(employee));
+                return employee;
             }
-
-            var filePath = GetFileName(employee.Id);
-
-            File.WriteAllText(filePath, JsonConvert.SerializeObject(employee));
-            return employee;
+            catch (Exception ex)
+            {
+                var rethrow = ExceptionPolicy.HandleException("data.policy", ex);
+                if (rethrow) throw;
+                return null;
+            }
         }
 
         public Model.Employee Get(string employeeId)
         {
-            if (Directory.Exists(Configurations.StoragePath) == false)
+            try
             {
-                throw new DataAccessException("Invalid storage path configuration.");
+                if (Directory.Exists(Configurations.StoragePath) == false)
+                {
+                    throw new DataAccessException("Invalid storage path configuration.");
+                }
+
+                var filePath = GetFileName(employeeId);
+
+                var employeeString = File.ReadAllText(filePath);
+                return JsonConvert.DeserializeObject<Model.Employee>(employeeString);
             }
-
-            var filePath = GetFileName(employeeId);
-
-            var employeeString = File.ReadAllText(filePath);
-            return JsonConvert.DeserializeObject<Model.Employee>(employeeString);
+            catch (Exception ex)
+            {
+                var rethrow = ExceptionPolicy.HandleException("data.policy", ex);
+                if (rethrow) throw;
+                return null;
+            }
         }
 
         public List<Model.Employee> GetAll()
         {
-            if (Directory.Exists(Configurations.StoragePath) == false)
+            try
             {
-                throw new DataAccessException("Invalid storage path configuration.");
+                if (Directory.Exists(Configurations.StoragePath) == false)
+                {
+                    throw new DataAccessException("Invalid storage path configuration.");
+                }
+
+                var employees = new List<Model.Employee>();
+                var fileNamesArray = Directory.GetFiles(Configurations.StoragePath, "*", SearchOption.TopDirectoryOnly);
+
+                if (fileNamesArray != null && fileNamesArray.Length > 0)
+                {
+                    var fileNames = fileNamesArray.ToList();
+                    fileNames.RemoveAll(file => Path.GetExtension(file).Equals(EXTENSION, StringComparison.OrdinalIgnoreCase) == false);
+                    fileNames.ForEach(fileName =>
+                        {
+                            var employeeString = File.ReadAllText(fileName);
+                            employees.Add(JsonConvert.DeserializeObject<Model.Employee>(employeeString));
+                        });
+                }
+                return employees;
             }
-
-            var employees = new List<Model.Employee>();
-            var fileNamesArray = Directory.GetFiles(Configurations.StoragePath, "*", SearchOption.TopDirectoryOnly);
-
-            if (fileNamesArray != null && fileNamesArray.Length > 0)
+            catch (Exception ex)
             {
-                var fileNames = fileNamesArray.ToList();
-                fileNames.RemoveAll(file => Path.GetExtension(file).Equals(EXTENSION, StringComparison.OrdinalIgnoreCase) == false);
-                fileNames.ForEach(fileName =>
-                    {
-                        var employeeString = File.ReadAllText(fileName);
-                        employees.Add(JsonConvert.DeserializeObject<Model.Employee>(employeeString));
-                    });
+                var rethrow = ExceptionPolicy.HandleException("data.policy", ex);
+                if (rethrow) throw;
+                return null;
             }
-            return employees;
         }
 
         private string GetFileName(string employeeId)

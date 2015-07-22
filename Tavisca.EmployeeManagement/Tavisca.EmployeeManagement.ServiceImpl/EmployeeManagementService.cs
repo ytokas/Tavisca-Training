@@ -29,9 +29,9 @@ namespace Tavisca.EmployeeManagement.ServiceImpl
             }
             catch (Exception ex)
             {
-                var rethrow = ExceptionPolicy.HandleException("logonly.policy", ex);
-                if (rethrow) throw;
-                return null;
+                Exception newEx;
+                var rethrow = ExceptionPolicy.HandleException("service.policy", ex, out newEx);
+                throw newEx;
             }
         }
 
@@ -45,9 +45,9 @@ namespace Tavisca.EmployeeManagement.ServiceImpl
             }
             catch (Exception ex)
             {
-                var rethrow = ExceptionPolicy.HandleException("logonly.policy", ex);
-                if (rethrow) throw;
-                return null;
+                Exception newEx;
+                var rethrow = ExceptionPolicy.HandleException("service.policy", ex, out newEx);
+                throw newEx;
             }
         }
     }

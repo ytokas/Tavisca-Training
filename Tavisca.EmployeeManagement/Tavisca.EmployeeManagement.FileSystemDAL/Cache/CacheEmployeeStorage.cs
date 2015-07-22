@@ -23,20 +23,24 @@ namespace Tavisca.EmployeeManagement.FileStorage
         ICacheManager _cacheManager;
 
         readonly string KEYFORMAT = "emp.{0}";
+        readonly string CACHEMANAGER = "employee";
 
         public Model.Employee Save(Model.Employee employee)
         {
             var result = _innerStorage.Save(employee);
-            _cacheManager.Add(string.Format(KEYFORMAT, result.Id), result, "employee");
+            _cacheManager.Add(string.Format(KEYFORMAT, result.Id), result, CACHEMANAGER);
             return result;
         }
 
         public Model.Employee Get(string employeeId)
         {
             Model.Employee result;
-            result = _cacheManager.Get(string.Format(KEYFORMAT, employeeId), "employee") as Model.Employee;
+            result = _cacheManager.Get(string.Format(KEYFORMAT, employeeId), CACHEMANAGER) as Model.Employee;
             if (result == null)
+            {
                 result = _innerStorage.Get(employeeId);
+                _cacheManager.Add(string.Format(KEYFORMAT, employeeId), result, CACHEMANAGER);
+            }
             return result;
         }
 

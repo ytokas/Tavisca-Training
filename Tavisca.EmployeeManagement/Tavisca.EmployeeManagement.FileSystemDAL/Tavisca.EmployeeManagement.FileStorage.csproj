@@ -49,6 +49,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Tavisca.EmployeeManagement.EnterpriseLibrary\Tavisca.EmployeeManagement.EnterpriseLibrary.csproj">
+      <Project>{f40c711d-95d8-4ec1-a6c0-761fb0ad0373}</Project>
+      <Name>Tavisca.EmployeeManagement.EnterpriseLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Tavisca.EmployeeManagement.ErrorSpace\Tavisca.EmployeeManagement.ErrorSpace.csproj">
       <Project>{7396f7d3-58a9-469e-92d6-50a26c4af73c}</Project>
       <Name>Tavisca.EmployeeManagement.ErrorSpace</Name>
