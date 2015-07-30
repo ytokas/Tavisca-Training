@@ -11,6 +11,8 @@ namespace Tavisca.EmployeeManagement.Interface
     {
         Employee Get(string employeeId);
 
-        List<Employee> GetAll();
+        PagedList<Employee> GetAll(int pageNumber = 1, int pageSize = 20, string orderBy = "Id", Model.SortingOrder sortingOrder = Model.SortingOrder.DESC);
+
+        PagedList<Remark> GetRemarks(string employeeId, int pageNumber = 1, int pageSize = 20, string orderBy = "Id", Model.SortingOrder sortingOrder = Model.SortingOrder.DESC);
     }
 }

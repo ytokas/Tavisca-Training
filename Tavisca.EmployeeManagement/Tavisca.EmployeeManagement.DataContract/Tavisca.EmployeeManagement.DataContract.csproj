@@ -40,7 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChangePasswordRequest.cs" />
+    <Compile Include="Credential.cs" />
     <Compile Include="Employee.cs" />
+    <Compile Include="PagedList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Remark.cs" />
   </ItemGroup>

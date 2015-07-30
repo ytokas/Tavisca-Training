@@ -20,7 +20,7 @@ namespace Tavisca.EmployeeManagement.Translator
                 Email = employee.Email,
                 JoiningDate = employee.JoiningDate,
                 Phone = employee.Phone,
-                Remarks = employee.Remarks == null ? null : employee.Remarks.Select(remark => remark.ToDomainModel()).ToList()
+                Roles = employee.Roles
             };
         }
 
@@ -36,8 +36,33 @@ namespace Tavisca.EmployeeManagement.Translator
                 Email = employee.Email,
                 JoiningDate = employee.JoiningDate,
                 Phone = employee.Phone,
-                Remarks = employee.Remarks == null ? null : employee.Remarks.Select(remark => remark.ToDataContract()).ToList()
+                Roles = employee.Roles
             };
+        }
+
+        public static DataContract.PagedList<DataContract.Employee> ToDataContract(this Model.PagedList< Model.Employee> employeeList)
+        {
+            if (employeeList == null) return null;
+            var pagedList = new DataContract.PagedList<DataContract.Employee>();
+            pagedList.PageNumber = employeeList.PageNumber;
+            pagedList.PageSize = employeeList.PageSize;
+            pagedList.TotalRecords = employeeList.TotalRecords;
+            pagedList.Results = new List<DataContract.Employee>();
+            employeeList.ForEach(employee => 
+                {
+                    pagedList.Results.Add(new DataContract.Employee()
+                    {
+                        Id = employee.Id,
+                        Title = employee.Title,
+                        FirstName = employee.FirstName,
+                        LastName = employee.LastName,
+                        Email = employee.Email,
+                        JoiningDate = employee.JoiningDate,
+                        Phone = employee.Phone,
+                        Roles = employee.Roles
+                    });
+                });
+            return pagedList;
         }
     }
 }

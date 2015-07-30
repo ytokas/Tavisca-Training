@@ -41,6 +41,8 @@
   <ItemGroup>
     <Compile Include="EmployeeManagementService.cs" />
     <Compile Include="EmployeeService.cs" />
+    <Compile Include="IdentityService.cs" />
+    <Compile Include="PagingHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

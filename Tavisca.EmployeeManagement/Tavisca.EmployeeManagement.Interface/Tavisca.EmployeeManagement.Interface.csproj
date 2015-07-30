@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IIdentityManager.cs" />
+    <Compile Include="IRemarkStorage.cs" />
     <Compile Include="ICacheManager.cs" />
     <Compile Include="IEmployeeStorage.cs" />
     <Compile Include="IEmployeeManagementManager.cs" />

@@ -15,7 +15,10 @@ namespace Tavisca.EmployeeManagement.ServiceContract
         [WebGet(UriTemplate = "employee/{employeeId}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         Employee Get(string employeeId);
 
-        [WebGet(UriTemplate = "employee", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
-        List<Employee> GetAll();
+        [WebGet(UriTemplate = "employee?pSize={pageSize}&pNum={pagenumber}&sortBy={orderBy}&isDesc={isDescending}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        PagedList<Employee> GetEmployees(string pageSize, string pageNum, string orderBy, string isDescending);
+
+        [WebGet(UriTemplate = "employee/{employeeId}/remark?pSize={pageSize}&pNum={pagenumber}&sortBy={orderBy}&isDesc={isDescending}", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        PagedList<Remark> GetRemarks(string employeeId, string pageSize, string pageNum, string orderBy, string isDescending);
     }
 }

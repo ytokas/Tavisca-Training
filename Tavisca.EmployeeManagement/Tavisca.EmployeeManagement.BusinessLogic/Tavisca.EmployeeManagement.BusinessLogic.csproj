@@ -41,9 +41,14 @@
   <ItemGroup>
     <Compile Include="EmployeeManagementManager.cs" />
     <Compile Include="EmployeeManager.cs" />
+    <Compile Include="IdentityManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Tavisca.EmployeeManagement.EnterpriseLibrary\Tavisca.EmployeeManagement.EnterpriseLibrary.csproj">
+      <Project>{f40c711d-95d8-4ec1-a6c0-761fb0ad0373}</Project>
+      <Name>Tavisca.EmployeeManagement.EnterpriseLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Tavisca.EmployeeManagement.Interface\Tavisca.EmployeeManagement.Interface.csproj">
       <Project>{473c6c04-74ef-4341-a090-87ddd73ac8d0}</Project>
       <Name>Tavisca.EmployeeManagement.Interface</Name>

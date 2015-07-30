@@ -20,9 +20,11 @@ namespace Tavisca.EmployeeManagement.Model
 
         public string Phone { get; set; }
 
+        public string Password { get; set; }
+
         public DateTime JoiningDate  { get; set; }
 
-        public List<Remark> Remarks { get; set; }
+        public List<string> Roles { get; set; }
 
         public void Validate()
         {

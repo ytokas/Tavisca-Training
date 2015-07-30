@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Tavisca.EmployeeManagement.FileStorage")]
+[assembly: AssemblyTitle("Tavisca.EmployeeManagement.MSSqlStorage")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Tavisca.EmployeeManagement.FileStorage")]
+[assembly: AssemblyProduct("Tavisca.EmployeeManagement.MSSqlStorage")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

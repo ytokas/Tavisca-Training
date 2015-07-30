@@ -13,6 +13,8 @@ namespace Tavisca.EmployeeManagement.Interface
 
         Employee Get(string employeeId);
 
-        List<Employee> GetAll();
+        PagedList<Employee> GetEmployees(int pageNumber = 1, int pageSize = 20, string orderBy = "Id", SortingOrder sortingOrder = SortingOrder.DESC);
+
+        Employee GetByEmail(string email);
     }
 }

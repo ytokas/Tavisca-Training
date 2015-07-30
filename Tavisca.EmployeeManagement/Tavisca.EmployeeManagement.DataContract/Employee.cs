@@ -32,6 +32,6 @@ namespace Tavisca.EmployeeManagement.DataContract
         public DateTime JoiningDate  { get; set; }
 
         [DataMember]
-        public List<Remark> Remarks { get; set; }
+        public List<string> Roles { get; set; }
     }
 }
