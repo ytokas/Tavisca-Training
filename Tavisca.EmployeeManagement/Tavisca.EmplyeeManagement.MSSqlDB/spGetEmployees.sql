@@ -29,10 +29,10 @@ WITH Employee_CTE AS (
 											WHEN @OrderBy = 'Id' THEN Id
 										END
 									END DESC
-							 ) as RowNo, Id, Title, FirstName, LastName, Email, Phone, JoiningDate FROM Employee
+							 ) as RowNo, Id, Title, FirstName, LastName, Email, Phone, JoiningDate, Roles FROM Employee
 )
 
-	SELECT Id, Title, FirstName, LastName, Email, Phone, JoiningDate, (select COUNT(*) from Employee_CTE) as TotalResults FROM Employee_CTE
+	SELECT Id, Title, FirstName, LastName, Email, Phone, JoiningDate, Roles, (select COUNT(*) from Employee_CTE) as TotalResults FROM Employee_CTE
 	WHERE RowNo between (@PageNumber - 1 )* @PageSize + 1 and @PageNumber * @PageSize;
 END
 

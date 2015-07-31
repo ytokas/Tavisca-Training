@@ -58,11 +58,12 @@
   <ItemGroup>
     <Build Include="spSaveEmployee.sql" />
     <Build Include="spGetEmployeeById.sql" />
-	<Build Include="spGetEmployees.sql" />
+    <Build Include="spGetEmployees.sql" />
     <Build Include="Employee.sql" />
     <Build Include="Remark.sql" />
-	<Build Include="spAddRemark.sql" />    
+    <Build Include="spAddRemark.sql" />
     <Build Include="spGetRemarksForEmployee.sql" />
+    <Build Include="spGetEmployeeByEmail.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Tavisca.EmplyeeManagement.MSSqlDB.publish.xml" />

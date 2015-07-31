@@ -32,11 +32,11 @@ namespace Tavisca.EmployeeManagement.ServiceTests
 
         [DataMember]
         public string Phone { get; set; }
-        
+
         [DataMember]
         public DateTime JoiningDate { get; set; }
 
         [DataMember]
-        public List<Remark> Remarks { get; set; }
+        public List<string> Roles { get; set; }
     }
 }

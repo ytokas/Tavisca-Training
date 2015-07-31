@@ -2,6 +2,6 @@
 	@EmployeeId int
 AS
 BEGIN
-	SELECT Title, FirstName, LastName, Email, Phone, JoiningDate FROM Employee 
+	SELECT Id, Title, FirstName, LastName, Email, Phone, JoiningDate, Roles FROM Employee 
 	WHERE Id = @EmployeeId
 END

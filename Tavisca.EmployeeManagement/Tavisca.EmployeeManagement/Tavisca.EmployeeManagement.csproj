@@ -130,6 +130,10 @@
       <Project>{a6c3cf2c-f69e-48d2-b96c-6eb9ca05436c}</Project>
       <Name>Tavisca.EmployeeManagement.BusinessLogic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Tavisca.EmployeeManagement.Cache\Tavisca.EmployeeManagement.Cache.csproj">
+      <Project>{59966f53-9b46-4af8-b24b-b718b7c97ad5}</Project>
+      <Name>Tavisca.EmployeeManagement.Cache</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Tavisca.EmployeeManagement.DataContract\Tavisca.EmployeeManagement.DataContract.csproj">
       <Project>{02315215-8efa-48ec-ba27-ab9fbf86224e}</Project>
       <Name>Tavisca.EmployeeManagement.DataContract</Name>
@@ -149,6 +153,10 @@
     <ProjectReference Include="..\Tavisca.EmployeeManagement.Model\Tavisca.EmployeeManagement.Model.csproj">
       <Project>{6aa6e0bf-c1f9-41ea-9e28-411f6df962ea}</Project>
       <Name>Tavisca.EmployeeManagement.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Tavisca.EmployeeManagement.MSSqlStorage\Tavisca.EmployeeManagement.MSSqlStorage.csproj">
+      <Project>{92f06f5b-76b5-4005-b34f-c09129a3c897}</Project>
+      <Name>Tavisca.EmployeeManagement.MSSqlStorage</Name>
     </ProjectReference>
     <ProjectReference Include="..\Tavisca.EmployeeManagement.ServiceContract\Tavisca.EmployeeManagement.ServiceContract.csproj">
       <Project>{58dccb8f-ffac-46cb-a2b4-8be431adab57}</Project>

@@ -59,6 +59,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="EmployeeManagementTestFixture.cs" />
+    <Compile Include="Model\Credential.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\DataAdapter.cs" />
     <Compile Include="Model\HttpClient.cs" />

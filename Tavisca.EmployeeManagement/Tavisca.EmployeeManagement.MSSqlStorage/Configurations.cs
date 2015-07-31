@@ -5,16 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tavisca.EmployeeManagement.FileStorage
+namespace Tavisca.EmployeeManagement.MSSqlStorage
 {
     internal static class Configurations
     {
-        internal static string StoragePath
+        internal static string EmployeeDbConnectionString
         {
             get
             {
-                var path = ConfigurationManager.AppSettings["employee_storage_path"];
-                return string.IsNullOrWhiteSpace(path) ? "." : path;
+                return ConfigurationManager.ConnectionStrings["employeedb"].ConnectionString;
             }
         }
     }
